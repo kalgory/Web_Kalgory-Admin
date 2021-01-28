@@ -10,6 +10,7 @@
     "source": "functions"
   },
   "hosting": {
+    "site" : "kalgory-admin",
     "public": "dist",
     "ignore": [
       "firebase.json",
