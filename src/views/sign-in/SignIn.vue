@@ -4,11 +4,13 @@
       <v-container
         class="fill-height"
       >
-        <v-layout class="align-center">
-          <v-flex class="login-form">
+        <v-row>
+          <v-col />
+          <v-col
+            :cols="6"
+          >
             <v-card
-              class="theme--light mx-auto"
-              max-width="600"
+              class="theme--light"
             >
               <v-card-title class="justify-center">
                 Log in to admin dashboard
@@ -17,8 +19,9 @@
                 <sign-in-form class="sign-in-form" />
               </v-card-text>
             </v-card>
-          </v-flex>
-        </v-layout>
+          </v-col>
+          <v-col />
+        </v-row>
       </v-container>
     </v-main>
   </v-app>
