@@ -32,7 +32,10 @@ import EmailTextField from '@/components/sign-in/form/EmailTextField.vue';
 import PasswordTextField from '@/components/sign-in/form/PasswordTextField.vue';
 
 export default {
-  components: { PasswordTextField, EmailTextField },
+  components: {
+    PasswordTextField,
+    EmailTextField,
+  },
   data: () => ({
     isEmailTextFieldFocus: false,
     isPasswordTextFieldFocus: false,
@@ -49,7 +52,6 @@ export default {
   },
   methods: {
     submit() {
-      // submit event
       if (this.isValid) {
         signInWithEmailAndPassword(this.email, this.password)
         // eslint-disable-next-line no-unused-vars
@@ -58,12 +60,12 @@ export default {
           })
         // eslint-disable-next-line no-unused-vars
           .catch((error) => {
-            this.$toasted.error(error.message);
+            this.$toasted.global.error({ message: error.message });
           })
           .finally(() => {
           });
       } else {
-        this.$toasted.error('입력이 유효하지 않습니다.');
+        this.$toasted.global.error({ message: '입력이 유효하지 않습니다.' });
       }
     },
   },
