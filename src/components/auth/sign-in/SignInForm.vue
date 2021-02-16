@@ -19,7 +19,6 @@
       type="submit"
       class="mt-5"
       @click.prevent="submit"
-      @keydown.enter="submit"
     >
       SIGN IN
     </v-btn>
