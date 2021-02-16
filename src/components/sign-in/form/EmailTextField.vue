@@ -40,7 +40,7 @@ export default {
   data: () => ({
     rules: [
       (v) => !!v || 'E-mail is required',
-      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      (v) => /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v) || 'E-mail must be valid',
     ],
   }),
 
@@ -61,8 +61,8 @@ export default {
     onFocus() {
       this.$emit('focus');
     },
-    onInput() {
-      this.$emit('input', this.value);
+    onInput(value) {
+      this.$emit('input', value);
     },
   },
 };
