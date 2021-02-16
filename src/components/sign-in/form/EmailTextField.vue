@@ -1,0 +1,69 @@
+<template>
+  <v-text-field
+    ref="textField"
+    validate-on-blur
+    clearable
+    :hint="hint"
+    :value="value"
+    :rules="rules"
+    type="email"
+    label="Email"
+    prepend-inner-icon="mdi-at"
+    placeholder="Type your email"
+    @input="onInput"
+    @focus="onFocus"
+    @blur="onBlur"
+  />
+</template>
+<script>
+export default {
+  name: 'EmailTextField',
+
+  props: {
+    value: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    hint: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    isFocus: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+
+  data: () => ({
+    rules: [
+      (v) => !!v || 'E-mail is required',
+      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+    ],
+  }),
+
+  watch: {
+    isFocus(value) {
+      if (value) {
+        this.$refs.textField.$refs.input.focus();
+      } else {
+        this.$refs.textField.$refs.input.blur();
+      }
+    },
+  },
+
+  methods: {
+    onBlur() {
+      this.$emit('blur');
+    },
+    onFocus() {
+      this.$emit('focus');
+    },
+    onInput() {
+      this.$emit('input', this.value);
+    },
+  },
+};
+</script>
