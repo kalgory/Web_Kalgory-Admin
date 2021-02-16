@@ -9,7 +9,7 @@
   </v-card>
 </template>
 <script>
-import SignInForm from '@/components/sign-in/SignInForm.vue';
+import SignInForm from '@/components/auth/sign-in/SignInForm.vue';
 
 export default {
   name: 'AuthCard',

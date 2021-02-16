@@ -28,28 +28,32 @@
 
 <script>
 import { signInWithEmailAndPassword } from '@/plugins/firebase/auth';
-import EmailTextField from '@/components/sign-in/form/EmailTextField.vue';
-import PasswordTextField from '@/components/sign-in/form/PasswordTextField.vue';
+import EmailTextField from '@/components/auth/form/email/EmailTextField.vue';
+import PasswordTextField from '@/components/auth/form/password/PasswordTextField.vue';
 
 export default {
   components: {
     PasswordTextField,
     EmailTextField,
   },
+
   data: () => ({
     isEmailTextFieldFocus: false,
     isPasswordTextFieldFocus: false,
     email: '',
     password: '',
   }),
+
   computed: {
     isValid() {
       return this.$refs.form.validate();
     },
   },
+
   mounted() {
     this.isEmailTextFieldFocus = true;
   },
+
   methods: {
     submit() {
       if (this.isValid) {
