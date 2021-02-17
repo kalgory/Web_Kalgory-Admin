@@ -1,7 +1,7 @@
 <template>
   <v-text-field
     ref="textField"
-    validate-on-blur
+    :validate-on-blur="isValidateOnBlur"
     clearable
     :hint="hint"
     :value="value"
@@ -34,6 +34,10 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    isValidateOnBlur: {
+      type: Boolean,
+      required: false,
     },
   },
 

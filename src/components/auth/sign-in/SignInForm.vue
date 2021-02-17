@@ -6,12 +6,14 @@
     <email-text-field
       v-model="email"
       :is-focus="isEmailTextFieldFocus"
+      :is-validate-on-blur="isEmailTextFieldValidateOnBlur"
       @blur="isEmailTextFieldFocus=false"
       @focus="isEmailTextFieldFocus=true"
     />
     <password-text-field
       v-model="password"
       :is-focus="isPasswordTextFieldFocus"
+      :is-validate-on-blur="isPasswordTextFieldValidateOnBlur"
       @blur="isPasswordTextFieldFocus=false"
       @focus="isPasswordTextFieldFocus=true"
     />
@@ -39,6 +41,8 @@ export default {
   data: () => ({
     isEmailTextFieldFocus: false,
     isPasswordTextFieldFocus: false,
+    isEmailTextFieldValidateOnBlur: false,
+    isPasswordTextFieldValidateOnBlur: false,
     email: '',
     password: '',
   }),
