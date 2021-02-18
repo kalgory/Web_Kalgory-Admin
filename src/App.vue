@@ -1,7 +1,7 @@
 <template>
-  <v-app>
-    <v-app-bar class="yellow" />
-    <v-main>kalgory admin</v-main>
-    <v-footer />
+  <v-app class="theme--dark">
+    <v-main>
+      <router-view />
+    </v-main>
   </v-app>
 </template>

@@ -11,3 +11,13 @@ const Options = {
 };
 
 Vue.use(Toasted, Options);
+
+Vue.toasted.register('error', (payload) => {
+  if (!payload.message) {
+    return '특정되지 않은 오류임';
+  }
+  return payload.message;
+}, {
+  type: 'error',
+  icon: 'mdi-alert-circle-outline',
+});
