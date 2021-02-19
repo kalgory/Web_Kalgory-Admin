@@ -1,13 +1,12 @@
+import { getToken } from '@/plugins/token';
 import router from './router';
-import store from './store';
 
 const whiteList = ['/signin'];
 
 router.beforeEach(async (to, from, next) => {
-  const user = store.getters.getUser;
-
-  if (user) {
-    if (to.path === 'signin') {
+  const hasToken = getToken('__session');
+  if (hasToken) {
+    if (to.path === '/signin') {
       next({ path: '/' });
     } else {
       next();
@@ -15,6 +14,6 @@ router.beforeEach(async (to, from, next) => {
   } else if (whiteList.indexOf(to.path) !== -1) {
     next();
   } else {
-    next('/signin');
+    next('signin');
   }
 });
