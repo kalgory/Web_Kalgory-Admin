@@ -7,7 +7,7 @@ router.beforeEach(async (to, from, next) => {
   const hasToken = getToken('__session');
   if (hasToken) {
     if (to.path === '/signin') {
-      next({ path: '/' });
+      next({ path: '/dashboard' });
     } else {
       next();
     }
