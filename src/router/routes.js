@@ -1,22 +1,22 @@
 // Base
-const Home = () => import('@/views/Home');
-
+const Base404 = () => import('@/views/Base404');
 // Auth
 const AuthSignIn = () => import('@/views/auth/AuthSignIn');
 
 export default [
   {
     path: '*',
-    component: Home,
+    meta: {
+      title: '',
+    },
+    component: Base404,
   },
   {
     name: 'sign in',
     path: '/signin',
+    meta: {
+      title: 'Sign In',
+    },
     component: AuthSignIn,
-  },
-  {
-    name: 'Home',
-    path: '/',
-    component: Home,
   },
 ];
