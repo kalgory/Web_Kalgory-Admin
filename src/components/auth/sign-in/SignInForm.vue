@@ -64,9 +64,11 @@ export default {
         signInWithEmailAndPassword(this.email, this.password)
         // eslint-disable-next-line no-unused-vars
           .then((userCredential) => {
-            setToken('__session').then(() => {
-              this.$router.replace('/');
-            });
+            userCredential.user.getIdToken(true)
+              .then((token) => {
+                setToken(token);
+                this.$router.replace('/dashboard');
+              });
           })
         // eslint-disable-next-line no-unused-vars
           .catch((error) => {
