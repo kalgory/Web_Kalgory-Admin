@@ -3,7 +3,6 @@ import App from './App.vue';
 
 import './plugins/firebase';
 import './plugins/toasted';
-import './permission';
 import Store from './store';
 import Vuetify from './plugins/vuetify';
 import Router from './router';

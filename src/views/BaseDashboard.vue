@@ -9,7 +9,6 @@
 
 <script>
 import { signOut } from '@/plugins/firebase/auth';
-import { removeToken } from '@/plugins/token';
 
 export default {
   name: 'BaseDashboard',
@@ -19,7 +18,6 @@ export default {
     signOut() {
       signOut()
         .then(() => {
-          removeToken();
           this.$toasted.show('로그아웃 완료');
           this.$router.replace('/signin');
         })

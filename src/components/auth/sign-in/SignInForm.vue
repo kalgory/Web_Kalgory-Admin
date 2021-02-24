@@ -29,7 +29,6 @@
 
 <script>
 import { signInWithEmailAndPassword } from '@/plugins/firebase/auth';
-import { setToken } from '@/plugins/token';
 import EmailTextField from '@/components/auth/form/email/EmailTextField.vue';
 import PasswordTextField from '@/components/auth/form/password/PasswordTextField.vue';
 
@@ -64,11 +63,6 @@ export default {
         signInWithEmailAndPassword(this.email, this.password)
         // eslint-disable-next-line no-unused-vars
           .then((userCredential) => {
-            userCredential.user.getIdToken(true)
-              .then((token) => {
-                setToken(token);
-                this.$router.replace('/dashboard');
-              });
           })
         // eslint-disable-next-line no-unused-vars
           .catch((error) => {
