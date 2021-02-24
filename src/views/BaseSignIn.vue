@@ -14,5 +14,19 @@ export default {
   components: {
     AuthCard,
   },
+
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.getIsAuthenticated;
+    },
+  },
+
+  watch: {
+    isAuthenticated(value) {
+      if (value) {
+        this.$router.push('/dashboard');
+      }
+    },
+  },
 };
 </script>

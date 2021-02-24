@@ -1,8 +1,7 @@
 // Base
 const Base404 = () => import('@/views/Base404');
 const BaseDashboard = () => import('@/views/BaseDashboard');
-// Auth
-const AuthSignIn = () => import('@/views/auth/AuthSignIn');
+const BaseSignIn = () => import('@/views/BaseSignIn');
 
 export default [
   {
@@ -12,6 +11,10 @@ export default [
       isAppbarShow: false,
     },
     component: Base404,
+  },
+  {
+    path: '/',
+    redirect: '/signin',
   },
   {
     name: 'dashboard',
@@ -29,6 +32,6 @@ export default [
       title: 'Sign In',
       isAppbarShow: false,
     },
-    component: AuthSignIn,
+    component: BaseSignIn,
   },
 ];

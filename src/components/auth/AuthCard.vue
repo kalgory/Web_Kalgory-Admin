@@ -13,6 +13,7 @@ import SignInForm from '@/components/auth/sign-in/SignInForm.vue';
 
 export default {
   name: 'AuthCard',
+
   components: {
     SignInForm,
   },
