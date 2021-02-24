@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="theme--dark">
     <app-bar v-if="$route.meta.isAppbarShow" />
     <v-main>
       <v-progress-linear
@@ -13,6 +13,7 @@
 <script>
 import AppBar from '@/components/app/AppBar.vue';
 import { onAuthStateChanged } from '@/plugins/firebase/auth';
+import { isAdminUser } from '@/plugins/firebase/firestore/user';
 
 export default {
   components: {
@@ -70,7 +71,9 @@ export default {
       onAuthStateChanged((user) => {
         this.$store.commit('setIsAuthLoading', false);
         if (user) {
-          this.$store.commit('setIsAuthenticated', true);
+          isAdminUser(user.uid).then((isAdmin) => {
+            if (isAdmin) this.$store.commit('setIsAuthenticated', true);
+          });
           this.$store.commit('setUser', user);
         } else {
           this.$store.commit('setIsAuthenticated', false);
