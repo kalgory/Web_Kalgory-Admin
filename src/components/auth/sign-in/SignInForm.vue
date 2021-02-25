@@ -63,6 +63,7 @@ export default {
         signInWithEmailAndPassword(this.email, this.password)
         // eslint-disable-next-line no-unused-vars
           .then((userCredential) => {
+            this.$router.push('/dashboard');
           })
         // eslint-disable-next-line no-unused-vars
           .catch((error) => {

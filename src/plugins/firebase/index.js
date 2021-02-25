@@ -7,3 +7,12 @@ import 'firebase/firestore';
 import FirebaseConfig from '../../../firebaseConfig';
 
 Firebase.initializeApp(FirebaseConfig);
+
+Firebase.getCurrentUser = () => new Promise((resolve, reject) => {
+  const unsubscribe = Firebase.auth().onAuthStateChanged((user) => {
+    unsubscribe();
+    resolve(user);
+  }, (error) => {
+    reject(error);
+  });
+});

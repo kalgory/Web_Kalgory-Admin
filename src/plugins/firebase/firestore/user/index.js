@@ -1,5 +1,6 @@
 import Firebase from 'firebase/app';
 
+// eslint-disable-next-line import/prefer-default-export
 export function isAdminUser(userUID) {
   return new Promise((resolve, reject) => {
     Firebase.firestore().collection('USER')
@@ -15,8 +16,4 @@ export function isAdminUser(userUID) {
         reject(error);
       });
   });
-}
-
-export function test() {
-
 }

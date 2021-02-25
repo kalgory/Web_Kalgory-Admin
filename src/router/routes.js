@@ -26,6 +26,7 @@ export default [
     meta: {
       title: 'Dashboard',
       isAppbarShow: true,
+      requiresAuth: true,
     },
     component: BaseDashboard,
   },
@@ -35,6 +36,7 @@ export default [
     meta: {
       title: 'User',
       isAppbarShow: true,
+      requiresAuth: true,
     },
     component: BaseUser,
   },
@@ -44,6 +46,7 @@ export default [
     meta: {
       title: 'Concept',
       isAppbarShow: true,
+      requiresAuth: true,
     },
     component: BaseConcept,
   },
@@ -53,6 +56,7 @@ export default [
     meta: {
       title: 'Problem',
       isAppbarShow: true,
+      requiresAuth: true,
     },
     component: BaseProblem,
   },
@@ -62,6 +66,7 @@ export default [
     meta: {
       title: 'Community',
       isAppbarShow: true,
+      requiresAuth: true,
     },
     component: BaseCommunity,
   },
