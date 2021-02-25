@@ -20,6 +20,7 @@
       <v-list-item
         v-for="item in items"
         :key="item.title"
+        :href="item.path"
       >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
@@ -52,22 +53,27 @@ export default {
         {
           title: 'Home',
           icon: 'mdi-home-variant',
+          path: '/dashboard',
         },
         {
           title: 'User',
           icon: 'mdi-account',
+          path: '/user',
         },
         {
           title: 'Concept',
           icon: 'mdi-head-dots-horizontal-outline',
+          path: '/concept',
         },
         {
           title: 'Community',
           icon: 'mdi-account-group',
+          path: 'community',
         },
         {
           title: 'Problem',
           icon: 'mdi-book-open-outline',
+          path: 'problem',
         },
       ],
     };

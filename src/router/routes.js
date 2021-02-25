@@ -2,6 +2,10 @@
 const Base404 = () => import('@/views/Base404');
 const BaseDashboard = () => import('@/views/BaseDashboard');
 const BaseSignIn = () => import('@/views/BaseSignIn');
+const BaseUser = () => import('@/views/BaseUser');
+const BaseConcept = () => import('@/views/BaseConcept');
+const BaseProblem = () => import('@/views/BaseProblem');
+const BaseCommunity = () => import('@/views/BaseCommunity');
 
 export default [
   {
@@ -24,6 +28,42 @@ export default [
       isAppbarShow: true,
     },
     component: BaseDashboard,
+  },
+  {
+    name: 'user',
+    path: '/user',
+    meta: {
+      title: 'User',
+      isAppbarShow: true,
+    },
+    component: BaseUser,
+  },
+  {
+    name: 'Concept',
+    path: '/concept',
+    meta: {
+      title: 'Concept',
+      isAppbarShow: true,
+    },
+    component: BaseConcept,
+  },
+  {
+    name: 'Problem',
+    path: '/problem',
+    meta: {
+      title: 'Problem',
+      isAppbarShow: true,
+    },
+    component: BaseProblem,
+  },
+  {
+    name: 'Community',
+    path: '/community',
+    meta: {
+      title: 'Community',
+      isAppbarShow: true,
+    },
+    component: BaseCommunity,
   },
   {
     name: 'sign in',
