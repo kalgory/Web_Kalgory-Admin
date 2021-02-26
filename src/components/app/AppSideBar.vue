@@ -5,7 +5,6 @@
     app
     width="300"
     :clipped="clipped"
-    expand-on-hover
   >
     <v-list-item>
       <v-list-item-content>
@@ -20,7 +19,7 @@
       <v-list-item
         v-for="item in items"
         :key="item.title"
-        :href="item.path"
+        :to="item.path"
       >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
@@ -41,7 +40,7 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
 
