@@ -13,6 +13,8 @@
     </v-app-bar>
     <app-side-bar
       :value="drawer"
+      :is-mobile="isMobile"
+      @click-outside="closeDrawer()"
     />
   </v-card>
 </template>
@@ -28,12 +30,35 @@ export default {
   },
 
   data: () => ({
-    drawer: true,
+    isDrawer: true,
   }),
+
+  computed: {
+    width() {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return 600;
+        case 'sm': return 960;
+        case 'md': return 1264;
+        case 'lg': return 1904;
+        default: return Number.MAX_SAFE_INTEGER;
+      }
+    },
+    isMobile() {
+      return this.$vuetify.breakpoint.width < this.width;
+    },
+    drawer() {
+      return this.isDrawer;
+    },
+  },
 
   methods: {
     toggleDrawer() {
-      this.drawer = !this.drawer;
+      this.isDrawer = !this.isDrawer;
+    },
+    closeDrawer() {
+      if (this.isMobile && this.isDrawer) {
+        this.isDrawer = !this.isDrawer;
+      }
     },
   },
 };

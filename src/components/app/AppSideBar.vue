@@ -1,6 +1,8 @@
 <template>
   <v-navigation-drawer
     v-model="localDrawer"
+    v-click-outside="onClickOutside"
+    disable-resize-watcher
     dark
     app
     width="300"
@@ -42,6 +44,9 @@ export default {
       type: Boolean,
       default: true,
     },
+    isMobile: {
+      type: Boolean,
+    },
   },
 
   data() {
@@ -81,6 +86,16 @@ export default {
   watch: {
     value(newValue) {
       this.localDrawer = newValue;
+    },
+  },
+
+  created() {
+    console.log(this.$vuetify.breakpoint.name);
+  },
+
+  methods: {
+    onClickOutside() {
+      if (this.isMobile && !this.localDrawer) this.$emit('click-outside');
     },
   },
 };
