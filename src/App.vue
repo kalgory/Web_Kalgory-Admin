@@ -2,6 +2,10 @@
   <v-app class="theme--dark">
     <app-bar v-if="$route.meta.isAppbarShow" />
     <v-main>
+      <v-progress-linear
+        v-if="isLoading"
+        indeterminate
+      />
       <router-view />
     </v-main>
   </v-app>
@@ -14,14 +18,10 @@ export default {
     AppBar,
   },
 
-  data: () => ({
-    isLoading: true,
-  }),
-
-  created() {
-  },
-
-  methods: {
+  computed: {
+    isLoading() {
+      return this.$store.getters.getIsAuthLoading;
+    },
   },
 };
 </script>
