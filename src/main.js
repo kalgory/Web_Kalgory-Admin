@@ -7,8 +7,6 @@ import Store from './store';
 import Vuetify from './plugins/vuetify';
 import Router from './router';
 
-import '@/permission';
-
 Vue.config.productionTip = false;
 
 new Vue({
