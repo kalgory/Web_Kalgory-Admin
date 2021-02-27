@@ -9,6 +9,7 @@ const BaseCommunity = () => import('@/views/BaseCommunity');
 
 export default [
   {
+    name: '404',
     path: '*',
     meta: {
       title: '',
@@ -41,7 +42,7 @@ export default [
     component: BaseUser,
   },
   {
-    name: 'Concept',
+    name: 'concept',
     path: '/concept',
     meta: {
       title: 'Concept',
@@ -51,7 +52,7 @@ export default [
     component: BaseConcept,
   },
   {
-    name: 'Problem',
+    name: 'problem',
     path: '/problem',
     meta: {
       title: 'Problem',
@@ -61,7 +62,7 @@ export default [
     component: BaseProblem,
   },
   {
-    name: 'Community',
+    name: 'community',
     path: '/community',
     meta: {
       title: 'Community',
