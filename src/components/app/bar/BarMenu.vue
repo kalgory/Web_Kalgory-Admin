@@ -24,7 +24,7 @@ export default {
     return {
       items: [
         {
-          title: 'Home',
+          title: 'Dashboard',
           icon: 'mdi-home-variant',
           path: '/dashboard',
         },
