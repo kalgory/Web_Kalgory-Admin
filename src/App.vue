@@ -8,13 +8,16 @@
       />
       <router-view />
     </v-main>
+    <app-footer />
   </v-app>
 </template>
 <script>
 import AppBar from '@/components/app/AppBar.vue';
+import AppFooter from '@/components/app/AppFooter.vue';
 
 export default {
   components: {
+    AppFooter,
     AppBar,
   },
 
