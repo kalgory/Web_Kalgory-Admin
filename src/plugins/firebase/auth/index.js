@@ -42,3 +42,13 @@ export function signOut() {
       });
   });
 }
+export function getCurrentUser() {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = Firebase.auth().onAuthStateChanged((user) => {
+      unsubscribe();
+      resolve(user);
+    }, (error) => {
+      reject(error);
+    });
+  });
+}
