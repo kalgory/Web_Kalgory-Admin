@@ -6,7 +6,7 @@
     <p
       class="ma-0 font-weight-thin"
     >
-      Copyright © 2021 Kalgory-Admin
+      Copyright © 2021 Kalgory
     </p>
   </v-footer>
 </template>
@@ -16,7 +16,3 @@ export default {
   name: 'AppFooter',
 };
 </script>
-
-<style scoped>
-
-</style>
