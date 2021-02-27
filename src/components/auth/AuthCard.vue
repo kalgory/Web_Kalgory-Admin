@@ -1,5 +1,8 @@
 <template>
-  <v-card class="theme--light">
+  <v-card
+    width="600"
+    class="ma-auto"
+  >
     <v-card-title class="justify-center">
       Log in to admin dashboard
     </v-card-title>

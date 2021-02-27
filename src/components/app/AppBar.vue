@@ -1,6 +1,9 @@
 <template>
   <v-card>
-    <v-app-bar app>
+    <v-app-bar
+      dark
+      app
+    >
       <v-app-bar-nav-icon @click="toggleDrawer">
         <v-icon v-if="drawer">
           mdi-menu-left-outline
@@ -10,6 +13,10 @@
         </v-icon>
       </v-app-bar-nav-icon>
       <v-toolbar-title>Title</v-toolbar-title>
+      <v-spacer />
+      <v-btn @click="signOut()">
+        Logout
+      </v-btn>
     </v-app-bar>
     <app-side-bar
       :value="drawer"
@@ -21,6 +28,7 @@
 
 <script>
 import AppSideBar from '@/components/app/AppSideBar.vue';
+import { signOut } from '@/plugins/firebase/auth';
 
 export default {
   name: 'AppBar',
@@ -59,6 +67,18 @@ export default {
       if (this.isMobile && this.isDrawer) {
         this.isDrawer = !this.isDrawer;
       }
+    },
+    signOut() {
+      signOut()
+        .then(() => {
+          this.$toasted.show('로그아웃 완료');
+          this.$router.replace('/signin');
+        })
+        .catch((error) => {
+          this.$toasted.show(error.message);
+        })
+        .finally(() => {
+        });
     },
   },
 };
