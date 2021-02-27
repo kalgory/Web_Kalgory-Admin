@@ -29,6 +29,7 @@
 
 <script>
 import { signInWithEmailAndPassword } from '@/plugins/firebase/auth';
+import { isAdminUser } from '@/plugins/firebase/firestore/user';
 import EmailTextField from '@/components/auth/form/email/EmailTextField.vue';
 import PasswordTextField from '@/components/auth/form/password/PasswordTextField.vue';
 
@@ -62,14 +63,16 @@ export default {
       if (this.isValid) {
         signInWithEmailAndPassword(this.email, this.password)
         // eslint-disable-next-line no-unused-vars
-          .then((userCredential) => {
-            this.$router.push('/dashboard');
+          .then((userCredential) => isAdminUser(userCredential.user.uid))
+          .then((isAdmin) => {
+            if (isAdmin) {
+              this.$router.push('/dashboard');
+            } else {
+              throw Error('Unauthorized Access');
+            }
           })
-        // eslint-disable-next-line no-unused-vars
           .catch((error) => {
             this.$toasted.global.error({ message: error.message });
-          })
-          .finally(() => {
           });
       } else {
         this.$toasted.global.error({ message: '입력이 유효하지 않습니다.' });
