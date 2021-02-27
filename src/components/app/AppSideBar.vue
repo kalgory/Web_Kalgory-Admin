@@ -9,9 +9,16 @@
     :clipped="clipped"
   >
     <v-list-item>
+      <v-img
+        lazy-src="../../assets/Logo-Initial-Background-lazy.svg"
+        src="../../assets/Logo-Initial-Background.svg"
+        max-width="32"
+        max-height="32"
+        class="mr-5"
+      />
       <v-list-item-content>
-        <v-list-item-title>Admin</v-list-item-title>
-        <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+        <v-list-item-title>Kalgory-admin</v-list-item-title>
+        <v-list-item-subtitle>test version</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
