@@ -3,7 +3,7 @@
     <app-bar v-if="$route.meta.isAppbarShow" />
     <v-main>
       <v-progress-linear
-        v-if="isLoading"
+        v-if="isAuthLoading"
         indeterminate
       />
       <router-view />
@@ -22,7 +22,7 @@ export default {
   },
 
   computed: {
-    isLoading() {
+    isAuthLoading() {
       return this.$store.getters.getIsAuthLoading;
     },
   },
