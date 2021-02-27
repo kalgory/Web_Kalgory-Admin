@@ -1,16 +1,14 @@
 <template>
   <v-navigation-drawer
-    v-model="localDrawer"
-    v-click-outside="onClickOutside"
+    v-model="isExpand"
     disable-resize-watcher
     dark
     app
     width="300"
-    :clipped="clipped"
+    :clipped="isClipped"
   >
     <v-list-item>
       <v-img
-        lazy-src="../../assets/Logo-Initial-Background-lazy.svg"
         src="../../assets/Logo-Initial-Background.svg"
         max-width="32"
         max-height="32"
@@ -33,42 +31,34 @@ import BarMenu from '@/components/app/bar/BarMenu.vue';
 
 export default {
   name: 'AppSideBar',
-  components: { BarMenu },
+
+  components: {
+    BarMenu,
+  },
+
   props: {
     value: {
       type: Boolean,
-      default: true,
     },
     isMobile: {
       type: Boolean,
+      default: false,
     },
   },
 
-  data() {
-    return {
-      localDrawer: this.value,
-      clipped: false,
-    };
-  },
+  data: () => ({
+    isClipped: false,
+  }),
 
-  watch: {
-    value(newValue) {
-      this.localDrawer = newValue;
-    },
-  },
-
-  created() {
-    console.log(this.$vuetify.breakpoint.name);
-  },
-
-  methods: {
-    onClickOutside() {
-      if (this.isMobile && !this.localDrawer) this.$emit('click-outside');
+  computed: {
+    isExpand: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit('input', value);
+      },
     },
   },
 };
 </script>
-
-<style scoped>
-
-</style>
