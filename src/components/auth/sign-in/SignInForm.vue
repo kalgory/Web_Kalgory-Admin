@@ -62,16 +62,19 @@ export default {
     submit() {
       if (this.isValid) {
         signInWithEmailAndPassword(this.email, this.password)
-        // eslint-disable-next-line no-unused-vars
           .then((userCredential) => checkAdmin(userCredential.user.uid))
           .then((isAdmin) => {
-            if (!isAdmin) {
-              return signOut()
-                .then(() => {
-                  this.$toasted.global.error({ message: 'Unauthorized Access' });
-                });
+            if (isAdmin) {
+              return isAdmin;
             }
-            return this.$router.push('/dashboard');
+            return signOut();
+          })
+          .then((isAdmin) => {
+            if (isAdmin) {
+              this.$router.push('/dashboard');
+            } else {
+              this.$toasted.global.error({ message: 'Unauthorized Access' });
+            }
           })
           .catch((error) => {
             this.$toasted.global.error({ message: error.message });
