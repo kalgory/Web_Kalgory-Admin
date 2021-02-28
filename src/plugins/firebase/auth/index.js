@@ -1,5 +1,4 @@
 import Firebase from 'firebase/app';
-// import { isAdminUser } from '../firestore/user';
 
 // eslint-disable-next-line no-shadow
 export function onAuthStateChanged(onAuthStateChanged) {
@@ -30,17 +29,5 @@ export function signOut() {
       .catch((error) => {
         reject(error);
       });
-  });
-}
-
-export function getCurrentUser() {
-  // Todo: current user
-  return new Promise((resolve, reject) => {
-    const unsubscribe = Firebase.auth().onAuthStateChanged((user) => {
-      unsubscribe();
-      resolve(user);
-    }, (error) => {
-      reject(error);
-    });
   });
 }
