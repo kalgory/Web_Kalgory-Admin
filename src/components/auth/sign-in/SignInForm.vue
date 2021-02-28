@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { signInWithEmailAndPassword } from '@/plugins/firebase/auth';
+import { signInWithEmailAndPassword, signOut } from '@/plugins/firebase/auth';
 import { checkAdmin } from '@/plugins/firebase/firestore/user';
 import EmailTextField from '@/components/auth/form/email/EmailTextField.vue';
 import PasswordTextField from '@/components/auth/form/password/PasswordTextField.vue';
@@ -68,7 +68,8 @@ export default {
             if (isAdmin) {
               this.$router.push('/dashboard');
             } else {
-              throw Error('Unauthorized Access');
+              signOut();
+              this.$toasted.global.error({ message: 'Unauthorized Access' });
             }
           })
           .catch((error) => {
