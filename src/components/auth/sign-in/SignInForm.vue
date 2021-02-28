@@ -65,12 +65,13 @@ export default {
         // eslint-disable-next-line no-unused-vars
           .then((userCredential) => checkAdmin(userCredential.user.uid))
           .then((isAdmin) => {
-            if (isAdmin) {
-              this.$router.push('/dashboard');
-            } else {
-              signOut();
-              this.$toasted.global.error({ message: 'Unauthorized Access' });
+            if (!isAdmin) {
+              return signOut()
+                .then(() => {
+                  this.$toasted.global.error({ message: 'Unauthorized Access' });
+                });
             }
+            return this.$router.push('/dashboard');
           })
           .catch((error) => {
             this.$toasted.global.error({ message: error.message });
