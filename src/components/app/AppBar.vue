@@ -47,6 +47,7 @@ export default {
 
   methods: {
     signOut() {
+      this.$store.commit('setIsAuthLoading', true);
       signOut()
         .then(() => {
           this.$toasted.global.success({ message: '로그아웃 완료' });
@@ -54,6 +55,9 @@ export default {
         })
         .catch((error) => {
           this.$toasted.global.error({ message: error.message });
+        })
+        .finally(() => {
+          this.$store.commit('setIsAuthLoading', false);
         });
     },
   },
