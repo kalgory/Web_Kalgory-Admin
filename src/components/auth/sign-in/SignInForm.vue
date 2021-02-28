@@ -29,7 +29,7 @@
 
 <script>
 import { signInWithEmailAndPassword } from '@/plugins/firebase/auth';
-import { isAdminUser } from '@/plugins/firebase/firestore/user';
+import { checkAdmin } from '@/plugins/firebase/firestore/user';
 import EmailTextField from '@/components/auth/form/email/EmailTextField.vue';
 import PasswordTextField from '@/components/auth/form/password/PasswordTextField.vue';
 
@@ -63,7 +63,7 @@ export default {
       if (this.isValid) {
         signInWithEmailAndPassword(this.email, this.password)
         // eslint-disable-next-line no-unused-vars
-          .then((userCredential) => isAdminUser(userCredential.user.uid))
+          .then((userCredential) => checkAdmin(userCredential.user.uid))
           .then((isAdmin) => {
             if (isAdmin) {
               this.$router.push('/dashboard');

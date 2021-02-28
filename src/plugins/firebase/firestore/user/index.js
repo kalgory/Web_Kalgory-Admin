@@ -1,7 +1,7 @@
 import Firebase from 'firebase/app';
 
 // eslint-disable-next-line import/prefer-default-export
-export function isAdminUser(userUID) {
+export function checkAdmin(userUID) {
   return new Promise((resolve, reject) => {
     Firebase.firestore().collection('USER').where('uid', '==', userUID).get()
       .then((querySnapshot) => {

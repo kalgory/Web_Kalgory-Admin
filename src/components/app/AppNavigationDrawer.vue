@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import BarMenu from '@/components/app/bar/BarMenu.vue';
+import BarMenu from '@/components/app/navigation-drawer/NavigationDrawerList.vue';
 
 export default {
   name: 'AppSideBar',
@@ -39,10 +39,6 @@ export default {
   props: {
     value: {
       type: Boolean,
-    },
-    isMobile: {
-      type: Boolean,
-      default: false,
     },
   },
 
