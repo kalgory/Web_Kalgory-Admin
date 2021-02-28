@@ -41,12 +41,12 @@ export default {
         {
           title: 'Community',
           icon: 'mdi-account-group',
-          path: 'community',
+          path: '/community',
         },
         {
           title: 'Problem',
           icon: 'mdi-book-open-outline',
-          path: 'problem',
+          path: '/problem',
         },
       ],
     };
