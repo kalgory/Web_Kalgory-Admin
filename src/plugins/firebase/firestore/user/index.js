@@ -8,9 +8,10 @@ export function checkAdmin(userUID) {
         if (querySnapshot.size > 1) {
           reject(Error('Duplicate users with same userUID'));
         }
-        querySnapshot.forEach((QueryDocumentSnapshot) => {
-          resolve(QueryDocumentSnapshot.data().is_admin);
-        });
+        if (querySnapshot.empty) {
+          reject(Error('No data!'));
+        }
+        resolve(querySnapshot.docs[0].data().is_admin);
       })
       .catch((error) => {
         reject(error);
