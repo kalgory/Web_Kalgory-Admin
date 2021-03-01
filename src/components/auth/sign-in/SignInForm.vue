@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import { signInWithEmailAndPassword } from '@/plugins/firebase/auth';
-import { setToken } from '@/plugins/token';
+import { signInWithEmailAndPassword, signOut } from '@/plugins/firebase/auth';
+import { checkAdmin } from '@/plugins/firebase/firestore/user';
 import EmailTextField from '@/components/auth/form/email/EmailTextField.vue';
 import PasswordTextField from '@/components/auth/form/password/PasswordTextField.vue';
 
@@ -62,17 +62,22 @@ export default {
     submit() {
       if (this.isValid) {
         signInWithEmailAndPassword(this.email, this.password)
-        // eslint-disable-next-line no-unused-vars
-          .then((userCredential) => {
-            setToken('__session').then(() => {
-              this.$router.replace('/');
-            });
+          .then((userCredential) => checkAdmin(userCredential.user.uid))
+          .then((isAdmin) => {
+            if (isAdmin) {
+              return isAdmin;
+            }
+            return signOut();
           })
-        // eslint-disable-next-line no-unused-vars
+          .then((isAdmin) => {
+            if (isAdmin) {
+              this.$router.push('/dashboard');
+            } else {
+              this.$toasted.global.error({ message: 'Unauthorized Access' });
+            }
+          })
           .catch((error) => {
             this.$toasted.global.error({ message: error.message });
-          })
-          .finally(() => {
           });
       } else {
         this.$toasted.global.error({ message: '입력이 유효하지 않습니다.' });
